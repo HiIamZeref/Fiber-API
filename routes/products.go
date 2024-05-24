@@ -169,6 +169,7 @@ func DeleteProduct(c *fiber.Ctx) error {
 		})
 	}
 
+	// Delete the product
 	if err := database.Database.Db.Delete(&product).Error; err != nil {
 		return c.Status(500).JSON(fiber.Map{
 			"message": "Error",
@@ -176,6 +177,7 @@ func DeleteProduct(c *fiber.Ctx) error {
 		})
 	}
 
+	// Return a success message
 	return c.Status(200).JSON(fiber.Map{
 		"message": "Product deleted",
 		"status": "OK",
